@@ -3,11 +3,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
 }
 
-body {
+html, body {
     background-color: #1e1e1e;
     color: white;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 
@@ -31,10 +34,6 @@ body {
     color: #f1641e;
 }
 
-.category-menu {
-    font-size: 14px;
-    cursor: pointer;
-}
 
 
 .search-bar {
@@ -49,6 +48,7 @@ body {
     padding: 10px 15px;
     border-radius: 25px 0px 0px 25px;
     border: none;
+    background-color: white;
 }
 
 .search-bar button {
@@ -60,12 +60,12 @@ body {
     cursor: pointer;
 }
 
-
 .header-right {
     display: flex;
     align-items: center;
-    gap: 30px; 
+    gap: 30px;
 }
+
 .icon-group {
     display: flex;
     gap: 30px;
@@ -76,7 +76,6 @@ body {
     cursor: pointer;
     font-size: 18px;
 }
-
 
 .icon-text {
     position: absolute;
@@ -92,24 +91,26 @@ body {
     display: none;
 }
 
-
 .icon-item:hover .icon-text {
     display: block;
 }
-
 
 .header-right a {
     color: white;
     text-decoration: none;
 }
 
-
 .navigation-bar {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     gap: 30px;
     padding: 10px;
     background-color: #181818;
+    z-index: 1000;
 }
 
 .navigation-bar a {
@@ -118,6 +119,91 @@ body {
     font-size: 14px;
 }
 
+.top-banner {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+    margin-top: 90px;
+    margin-bottom: 40px;
+    
+}
+
+.top-banner img {
+    width: 75%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-text {
+    transform: translateX(170px);
+    max-width: 720px;
+    color: #636c6e;
+    padding-right: 60px;
+    padding-top: 40px;
+}
+
+.banner-text h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.banner-text p {
+    font-size: 18px;
+    color: #575859;
+}
+
+.gift-content-area {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.gift-heading {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #8ab4a2;
+    margin-bottom: 20px;
+}
+
+.gift-description {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #cccccc;
+    margin-bottom: 30px;
+}
+
+.gift-sub-block {
+    margin-bottom: 20px;
+}
+
+.gift-sub-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #8ab4a2;
+    margin-bottom: 6px;
+}
+
+.gift-sub-block p {
+    font-size: 14px;
+    color: #bbbbbb;
+    line-height: 1.6;
+}
+
+.gift-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.gift-point {
+    font-size: 14px;
+    color: #d0d0d0;
+}
 
 .container {
     display: flex;
@@ -149,7 +235,6 @@ body {
     color: white;
 }
 
-
 .side-box {
     flex: 1;
     background-color: #111;
@@ -169,8 +254,7 @@ body {
     color: #aaa;
 }
 
-
-.winter-collection {
+.winter-block {
     padding: 50px 40px;
     background-color: #121212;
     color: white;
@@ -188,7 +272,7 @@ body {
     gap: 22px;
 }
 
-.winter-card {
+.winter-block {
     background-color: #1e1e1e;
     border-radius: 16px;
     overflow: hidden;
@@ -196,11 +280,11 @@ body {
     transition: transform 0.3s ease;
 }
 
-.winter-card:hover {
+.winter-block:hover {
     transform: translateY(-6px);
 }
 
-.winter-card img {
+.winter-block img {
     width: 100%;
     height: 280px;
     object-fit: cover;
@@ -212,8 +296,320 @@ body {
     font-weight: 500;
 }
 
+
+.bags-block {
+    padding: 60px 40px;
+    background-color: #121212;
+}
+.bags-title{
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+.product-card {
+    background-color: transparent;
+}
+
+.product-card img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 12px;
+    color: #eaeaea;
+}
+
+.product-card .price {
+    font-size: 14px;
+    margin-top: 6px;
+    color: #cfcfcf;
+}
+.bags-block:hover {
+    transform: translateY(-6px);
+}
+
+.watches-block {
+    padding: 60px 40px;
+    background-color: #121212;
+}
+
+.watches-heading {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+
+.watches-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 26px;
+}
+
+
+.watch-card {
+    position: relative;
+    background-color: transparent;
+}
+
+.watch-card img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+
+.watch-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background-color: #1c2b39;
+    color: #ffffff;
+    font-size: 12px;
+    padding: 6px 10px;
+    letter-spacing: 0.5px;
+}
+
+
+.watch-info {
+    margin-top: 12px;
+}
+
+.watch-title {
+    font-size: 14px;
+    color: #eaeaea;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+
+.watch-price {
+    font-size: 14px;
+    color: #cfcfcf;
+}
+
+.price-new {
+    color: #ff5c5c;
+    font-weight: 600;
+}
+
+.price-old {
+    text-decoration: line-through;
+    margin-left: 6px;
+    color: #9a9a9a;
+}
+
+.price-off {
+    margin-left: 6px;
+    color: #ff5c5c;
+    font-weight: 500;
+}
+
+.watches-block:hover {
+    transform: translateY(-6px);
+}
+
+
+.wedding-block {
+    padding: 60px 40px;
+    background-color: #151818;
+    color: #ffffff;
+}
+
+.wedding-heading {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 28px;
+}
+
+
+.wedding-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+
+.wedding-card {
+    background-color: #1f2323;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+}
+
+.wedding-card img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+}
+
+
+.wedding-info {
+    padding: 16px;
+}
+
+.wedding-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.wedding-price {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.wedding-price .old {
+    text-decoration: line-through;
+    color: #9a9a9a;
+    font-weight: 400;
+    margin-right: 6px;
+}
+
+.wedding-price .off {
+    color: #42d67d;
+    font-size: 13px;
+    margin-left: 6px;
+}
+
+.wedding-block:hover {
+    transform: translateY(-6px);
+}
+
+
+
+.fashion-block {
+    background-color: #121414;
+    padding: 50px 40px;
+}
+
+
+
+.fashion-finds-heading {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+
+
+.fashion-finds-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+
+.fashion-item-card {
+    position: relative;
+    background-color: #1b1d1e;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.fashion-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+
+.fashion-item-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
+
+.fashion-item-info {
+    padding: 14px 4px;
+    color: #e6e6e6;
+}
+
+.fashion-item-title {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+
+.fashion-rating {
+    font-size: 13px;
+    color: #bdbdbd;
+    margin-bottom: 6px;
+}
+
+.fashion-brand {
+    color: #a78bfa;
+}
+
+
+.fashion-price-main {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.fashion-price-discount {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.fashion-price-new {
+    color: #3cff7f;
+    font-weight: 600;
+    margin-right: 6px;
+}
+
+.fashion-price-old {
+    text-decoration: line-through;
+    color: #9a9a9a;
+    margin-right: 6px;
+}
+
+.fashion-offer {
+    color: #9cffc1;
+    font-size: 13px;
+}
+
+.fashion-delivery {
+    font-size: 13px;
+    color: #b5b5b5;
+    margin-top: 4px;
+}
+
+
+.fashion-more {
+    font-size: 13px;
+    color: #a0a0a0;
+    margin-top: 6px;
+}
+
+
+
+
+
 .site-footer {
-    background-color: #3a3300;   
+    background-color: #3a3300;
     color: #e6e6e6;
     padding: 50px 40px 20px;
     margin-top: 80px;
@@ -247,12 +643,11 @@ body {
     text-decoration: underline;
     color: #d9d9d9;
     font-size: 14px;
-    
 }
 
 .footer-column a:hover {
     color: #ffffff;
- }
+}
 
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -263,3 +658,152 @@ body {
     color: #cccccc;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+.page-content {
+    margin-top: 160px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* responsive  */
+@media (max-width: 1024px) {
+
+    .search-bar {
+        max-width: 480px;
+    }
+
+    .top-banner img {
+        width: 85%;
+    }
+    .banner-text {
+        display: none;
+    }
+
+    .product-grid,
+    .watches-grid,
+    .wedding-grid,
+    .fashion-finds-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    
+    .main-header {
+        flex-wrap: wrap;
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+
+    .navigation-bar {
+        flex-wrap: wrap;
+        gap: 14px;
+        font-size: 13px;
+    }
+
+
+    .top-banner {
+        height: auto;
+    
+    }
+
+    .top-banner img {
+        width: 50%;
+        margin-right: 20px;
+    }
+
+    .banner-text {
+        transform: none;
+        right: auto;
+        margin: 20px;
+        text-align: center;
+        display: none;
+   
+    } 
+
+  
+    .container {
+        flex-direction: column;
+    }
+
+
+    .winter-grid,
+    .product-grid,
+    .watches-grid,
+    .wedding-grid,
+    .fashion-finds-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+
+
+    .main-header {
+        padding: 12px 16px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .icon-group {
+        gap: 16px;
+    }
+
+
+    .navigation-bar {
+        gap: 10px;
+        font-size: 12px;
+    }
+
+
+    .banner-text h1 {
+
+        display: none;
+    }
+
+    .banner-text p {
+      
+        display: none;
+    }
+
+
+    .winter-grid,
+    .product-grid,
+    .watches-grid,
+    .wedding-grid,
+    .fashion-finds-grid {
+        grid-template-columns: 1fr;
+    }
+
+ 
+    .product-card img,
+    .watch-card img,
+    .fashion-item-image,
+    .wedding-card img {
+        height: 280px;
+        object-fit: cover;
+    }
+
+
+    .site-footer {
+        padding: 40px 20px;
+    }
+}

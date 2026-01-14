@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1e1e1e;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-wrapper {
+    width: 90%;
+    max-width: 1100px;
+    height: 600px;
+    background-color: #111;
+    border-radius: 18px;
+    display: flex;
+    overflow: hidden;
+}
+
+.login-left {
+    flex: 1;
+    background: linear-gradient( #f1641e, #c84a12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-left img {
+    width: 90%;
+    transform: rotate(-6deg);
+    object-fit: cover;
+}
+
+.login-right {
+    flex: 1;
+    background-color: #1b1b1b;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-right h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.login-right form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-right input {
+    background-color: #2a2a2a;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    color: white;
+    font-size: 14px;
+}
+
+.login-right input::placeholder {
+    color: #aaaaaa;
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.login-options a {
+    color: #f1641e;
+    text-decoration: none;
+}
+
+.login-btn {
+    background-color: #f1641e;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 14px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.divider {
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.social-btn {
+    border-radius: 30px;
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.google {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.apple {
+    background-color: #000;
+    color: #fff;
+}
+
+.signup-text {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 18px;
+}
+
+.signup-text a {
+    color: #f1641e;
+    text-decoration: none;
+}

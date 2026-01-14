@@ -1,0 +1,439 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #fff;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: #111;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo a {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f1641e;
+    text-decoration: none;
+}
+
+.category-menu {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.search-bar {
+    display: flex;
+    flex: 1;
+    max-width: 600px;
+    margin: 0 30px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 25px 0px 0px 25px;
+    border: none;
+    background-color: white;
+}
+
+.search-bar button {
+    padding: 10px 18px;
+    border-radius: 0px 25px 25px 0px;
+    border: none;
+    background-color: #f1641e;
+    color: white;
+    cursor: pointer;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+.page-content {
+    margin-top: 160px;
+}
+
+.icon-group {
+    display: flex;
+    gap: 30px;
+}
+
+.icon-item {
+    position: relative;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.icon-text {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #040000;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    display: none;
+}
+
+.icon-item:hover .icon-text {
+    display: block;
+}
+
+.header-right a {
+    color: white;
+    text-decoration: none;
+}
+
+.navigation-bar {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
+    background-color: #181818;
+    z-index: 1000;
+}
+
+.navigation-bar a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+
+.gifts {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(120deg, #1e3c72, #2a5298);
+}
+
+.gifts h1 {
+    font-size: 42px;
+}
+
+.gifts p {
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+
+.categories-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card p {
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+.site-footer {
+    background-color: #3a3300;
+    color: #e6e6e6;
+    padding: 50px 40px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.footer-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d9d9d9;
+}
+
+.footer-column a {
+    text-decoration: underline;
+    color: #d9d9d9;
+    font-size: 14px;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 40px;
+    padding-top: 15px;
+    font-size: 13px;
+    text-align: center;
+    color: #cccccc;
+}
+
+
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  margin-top: 100px;
+  
+}
+
+
+
+
+.gift-card {
+  background: #1f1f1f;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.gift-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+
+
+.gift-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.4s ease;
+}
+
+.gift-card:hover .gift-image {
+  transform: scale(1.1);
+}
+
+.flower-image {
+  background: linear-gradient(135deg, #2015b0, #490101);
+}
+
+.frame-image {
+  background: linear-gradient(135deg, #06a72e, #d8e6e6);
+}
+
+.mug-image {
+  background: linear-gradient(135deg, #1167e0, #d9c2b5);
+}
+
+.bouquet-image {
+  background: linear-gradient(135deg, #2e5d4f, #130004);
+}
+
+.clock-image {
+  background: linear-gradient(135deg, #b9d57d, #710b72);
+}
+
+.lamp-image {
+  background: linear-gradient(135deg, #1a1a1a, #051d7e);
+}
+
+
+.gift-info {
+  padding: 18px;
+}
+
+.gift-info h3 {
+  color: #ff8c32;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.gift-info p {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.gift-price {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* responsive */
+
+@media (max-width: 1024px) {
+
+  .search-bar {
+    max-width: 450px;
+  }
+
+  .gift-grid {
+    padding: 70px;
+
+  }
+
+  .categories-container {
+    padding: 40px 20px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .main-header {
+    padding: 12px 20px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+    margin: 0 15px;
+  }
+
+  .navigation-bar {
+    gap: 20px;
+  }
+
+  .gifts h1 {
+    font-size: 36px;
+  }
+
+  .categories {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .gift-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-content {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+
+ 
+  .main-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .search-bar input {
+    font-size: 14px;
+  }
+
+  .header-right {
+    gap: 20px;
+  }
+
+
+  .navigation-bar {
+    top: 130px;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 13px;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    
+  }
+
+  .page-content {
+    margin-top: 220px;
+  }
+  
+   
+  .gifts h1 {
+    font-size: 30px;
+  }
+
+  .gifts p {
+    font-size: 14px;
+  }
+
+
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gift-grid {
+    grid-template-columns: repeat(2,1fr);
+    padding: 20px;
+    margin-top: 210px;
+   
+  }
+
+
+  .site-footer {
+    padding: 30px 20px;
+  }
+}
