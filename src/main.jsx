@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Link, NavLink, Route, Routes, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Flower2, Gift, Heart, Minus, Plus, Search, ShoppingBag, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Gift, Heart, Minus, Plus, Search, ShoppingBag, SlidersHorizontal, X } from 'lucide-react';
 import { budgets, categories, matches, money, occasions, photo, preferences, products } from './catalog';
 import '@fontsource-variable/dm-sans/wght.css';
-import '@fontsource/instrument-serif/latin-400.css';
-import '@fontsource/instrument-serif/latin-400-italic.css';
 import './style.css';
 
 const productById = Object.fromEntries(products.map((product) => [product.id, product]));
@@ -60,7 +58,7 @@ function Header({ count, openBasket }) {
   return <>
     <header className="site-header">
       <div className="wrap header-inner">
-        <Link className="brand" to="/" aria-label="HandyCrafts home"><Flower2 /> HandyCrafts<span>.</span></Link>
+        <Link className="brand" to="/" aria-label="HandyCrafts home">HandyCrafts</Link>
         <form key={location.pathname + location.search} className="search" role="search" onSubmit={(event) => {
           event.preventDefault();
           const search = new FormData(event.currentTarget).get('q').trim();
@@ -103,41 +101,62 @@ function ProductGrid({ items, favourites, toggle }) {
     saved={favourites.includes(item.id)} toggle={toggle} />)}</div>;
 }
 
+const seasonalPicks = [
+  ['Top gifts', 'img-1', '/shop?category=gifts'],
+  ['New arrivals', 'img2', '/shop'],
+  ['Cosy finds', 'img3', '/shop?category=fashion'],
+  ['Family traditions', 'img4', '/shop?preference=keepsakes'],
+  ['Books & libraries', 'img5', null],
+];
+
+const homeCollections = [
+  ['bags', 'Travels and Bags', 'Palace Memoirs'],
+  ['watches', 'Watches', null],
+  ['wedding', 'Forever Wedding Classics', null],
+  ['fashion', 'Fashion Finds', null],
+];
+
 function Home(props) {
-  const cards = [
-    ['gifts', 'Gifts for every occasion', 'wedding3'],
-    ['bags', 'Travel & bags', 'lucknow'],
-    ['wedding', 'Wedding keepsakes', 'wedding4'],
-    ['fashion', 'Fashion finds', 'fashion1'],
-    ['watches', 'Watches', 'watch11'],
-  ];
-  return <div className="wrap home">
-    <section className="hero">
-      <div className="hero-copy">
-        <p className="eyebrow">The HandyCrafts collection</p>
-        <h1>Thoughtful gifts,<br /><em>beautifully made.</em></h1>
-        <p>Discover floral bags, wedding keepsakes, and small gifts for the people you’re thinking of.</p>
-        <div className="hero-actions"><Link className="primary" to="/finder">Find a gift <ArrowRight size={17} /></Link>
-          <Link className="text-link" to={allCollections}>Shop the collection</Link></div>
+  return <div className="home">
+    <section className="original-hero" aria-labelledby="home-heading">
+      {image('bottle', '', { loading: 'eager', fetchPriority: 'high' })}
+      <div className="wrap original-hero-copy">
+        <div>
+          <h1 id="home-heading">The HandyCraft Collection</h1>
+          <p>Thoughtfully made pieces for modern living</p>
+          <Link className="primary" to={allCollections}>Explore the collection <ArrowRight size={17} /></Link>
+        </div>
       </div>
-      <figure>
-        {image('jaipur1-large', 'Golden floral Jaipur sling carried against an ivory outfit', {
-          loading: 'eager', fetchPriority: 'high', srcSet: `${photo('jaipur1')} 576w, ${photo('jaipur1-large')} 960w`, sizes: '(max-width: 720px) 100vw, 50vw',
-        })}
-        <figcaption><Link to="/product/jaipur-sling">The Jaipur Sling <ArrowRight size={15} /></Link></figcaption>
-      </figure>
     </section>
-    <section className="section">
-      <div className="section-heading"><h2>Explore the collections</h2><Link className="text-link" to={allCollections}>Shop all <ArrowRight size={16} /></Link></div>
-      <div className="collection-grid">{cards.map(([key, label, asset]) => <Link className="collection-card" to={collection(key)} key={key}>
-        {image(asset, '')}<span>{label} <ArrowRight size={15} /></span>
-      </Link>)}</div>
-    </section>
-    <section className="section">
-      <div className="section-heading"><div><p className="eyebrow">Travel & bags</p><h2>Palace Memoirs</h2></div>
-        <Link className="text-link" to={collection('bags')}>Explore bags <ArrowRight size={16} /></Link></div>
-      <ProductGrid items={products.slice(0, 4)} {...props} />
-    </section>
+    <div className="wrap">
+      <div className="original-promos">
+        <section className="urgent-gift">
+          <h2>Need a gift ASAP?</h2>
+          <p>Find thoughtful gifts, even though it’s down to the wire.</p>
+          <Link className="primary" to="/finder">Shop our picks <ArrowRight size={17} /></Link>
+        </section>
+        <section className="budget-gift">
+          {image('wedding4', '')}
+          <div><h2>Gifts under ₹1,000</h2><Link className="text-link" to="/shop?budget=small">Shop now <ArrowRight size={16} /></Link></div>
+        </section>
+      </div>
+      <section className="section seasonal-section">
+        <div className="section-heading"><h2>Discover our best of winter 2026</h2></div>
+        <div className="collection-grid seasonal-grid">{seasonalPicks.map(([label, asset, to]) => to
+          ? <Link className="collection-card" to={to} key={label}>{image(asset, '')}<span>{label} <ArrowRight size={15} /></span></Link>
+          : <div className="collection-card" key={label}>{image(asset, '')}<span>{label}</span></div>)}</div>
+      </section>
+      {homeCollections.map(([category, title, collectionName]) => <section className="section home-collection" key={category}>
+        <div className="section-heading"><div>{collectionName && <p className="eyebrow">{collectionName}</p>}<h2>{title}</h2></div>
+          <Link className="text-link" to={collection(category)}>View collection <ArrowRight size={16} /></Link></div>
+        <ProductGrid items={products.filter((product) => product.category === category)} {...props} />
+      </section>)}
+      <section className="section gifting-note">
+        <h2>Affordable and thoughtful gifts for everyday moments</h2>
+        <p>Find a photo keepsake for a wedding, a watch for a birthday, or a small thank-you for someone who helped.</p>
+        <Link className="text-link" to="/finder">Find a gift <ArrowRight size={16} /></Link>
+      </section>
+    </div>
   </div>;
 }
 
@@ -337,7 +356,7 @@ function App() {
       </Routes>
     </main>
     <footer><div className="wrap footer-inner">
-      <Link className="brand" to="/"><Flower2 /> HandyCrafts<span>.</span></Link>
+      <Link className="brand" to="/">HandyCrafts</Link>
       <nav aria-label="Footer"><Link to={allCollections}>Shop all</Link><Link to="/finder">Gift Finder</Link><Link to="/favourites">Favourites</Link></nav>
     </div></footer>
     {basketOpen && <Basket basket={basket} changeQuantity={changeQuantity} onClose={() => setBasketOpen(false)} />}

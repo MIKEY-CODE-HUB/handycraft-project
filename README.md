@@ -1,6 +1,6 @@
 # HandyCrafts
 
-A responsive craft storefront built with React and Vite, using the existing HandyCrafts catalog photography.
+A responsive React and Vite storefront built around the original dark homepage, ship-in-a-bottle hero, and seasonal collections.
 
 ## Run locally
 
