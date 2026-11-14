@@ -25,6 +25,26 @@ export const products = [
   ['basket-bag', 'Handwoven Basket Bag', 7604, 'fashion', 'fashion', 'bags', ['birthday'], 'A handwoven basket bag in vegan leather.'],
   ['leather-handbag', 'Elegant Leather Handbag', 11081, 'fashion3', 'fashion', 'bags', ['birthday'], 'A leather handbag from Teplo Leather.'],
   ['top-handle', 'Classic Leather Top Handle Bag', 11060, 'fashion4', 'fashion', 'bags', ['birthday'], 'A classic top-handle bag with a structured silhouette.'],
+  ['canvas-weekender', 'Olive Canvas Weekender', 3899, 'canvas-weekender', 'bags', 'bags', ['birthday'], 'An olive duffel with a roomy shape for short trips.'],
+  ['market-tote', 'Natural Canvas Market Tote', 1299, 'market-tote', 'bags', 'bags', ['birthday', 'thanks'], 'A natural canvas tote for errands and weekend markets.'],
+  ['indigo-pouch', 'Indigo Travel Pouch', 799, 'indigo-pouch', 'bags', 'bags', ['thanks'], 'A zippered indigo pouch for small travel essentials.'],
+  ['passport-sleeve', 'Cognac Passport Sleeve', 1199, 'passport-sleeve', 'bags', 'accessories', ['birthday', 'thanks'], 'A warm brown sleeve to keep a passport close at hand.'],
+  ['toast-flutes', 'Wedding Toast Flute Pair', 2499, 'toast-flutes', 'wedding', 'keepsakes', ['wedding'], 'Two champagne flutes presented together as a wedding gift.'],
+  ['linen-guest-book', 'Ivory Linen Guest Book', 1399, 'linen-guest-book', 'wedding', 'keepsakes', ['wedding'], 'An ivory guest book for handwritten wedding wishes.'],
+  ['brass-ring-dish', 'Brass Ring Dish', 899, 'brass-ring-dish', 'wedding', 'keepsakes', ['wedding'], 'A small brass dish for rings and other everyday jewellery.'],
+  ['taper-candle-pair', 'Cream Taper Candle Pair', 649, 'taper-candle-pair', 'wedding', 'keepsakes', ['wedding', 'thanks'], 'Two cream tapers for a wedding table or a quiet dinner.'],
+  ['indigo-scarf', 'Indigo Block Print Scarf', 1599, 'indigo-scarf', 'fashion', 'accessories', ['birthday'], 'A lightweight scarf with a repeating indigo print.'],
+  ['amber-necklace', 'Amber Bead Necklace', 1199, 'amber-necklace', 'fashion', 'accessories', ['birthday'], 'A strand of warm amber-coloured beads.'],
+  ['hammered-hoops', 'Silver-Tone Hammered Hoops', 999, 'hammered-hoops', 'fashion', 'accessories', ['birthday', 'thanks'], 'Textured silver-tone hoops for everyday outfits.'],
+  ['woven-belt', 'Tan Woven Belt', 1299, 'woven-belt', 'fashion', 'accessories', ['birthday'], 'A woven tan belt with a classic buckle.'],
+  ['heritage-watch', 'Heritage Leather Watch', 2199, 'heritage-watch', 'watches', 'accessories', ['birthday'], 'A cream analog dial with a brown leather strap.'],
+  ['square-dial-watch', 'Midnight Square Dial Watch', 2499, 'square-dial-watch', 'watches', 'accessories', ['birthday'], 'A square analog dial with a black strap.'],
+  ['olive-field-watch', 'Olive Field Watch', 1899, 'olive-field-watch', 'watches', 'accessories', ['birthday', 'thanks'], 'An easy-to-read field watch with an olive canvas strap.'],
+  ['silver-mesh-watch', 'Silver Mesh Watch', 2699, 'silver-mesh-watch', 'watches', 'accessories', ['birthday'], 'A slim watch with a silver-tone mesh bracelet.'],
+  ['botanical-cards', 'Botanical Greeting Card Set', 399, 'botanical-cards', 'gifts', 'keepsakes', ['birthday', 'thanks'], 'A boxed set of illustrated botanical greeting cards.'],
+  ['morning-mug', 'Pale Blue Morning Mug', 499, 'morning-mug', 'gifts', 'keepsakes', ['birthday', 'thanks'], 'A pale blue ceramic mug for tea or coffee.'],
+  ['amber-jar-candle', 'Amber Jar Candle', 699, 'amber-jar-candle', 'gifts', 'keepsakes', ['birthday', 'thanks'], 'A candle poured in an amber-coloured jar.'],
+  ['dried-flower-posy', 'Dried Flower Posy', 849, 'dried-flower-posy', 'gifts', 'keepsakes', ['birthday', 'thanks'], 'A small arrangement of dried flowers in muted colours.'],
 ].map(([id, name, price, image, category, preference, occasions, description]) => ({
   id, name, price, image, category, preference, occasions, description,
 }));
@@ -37,7 +57,7 @@ export function matches(product, filters) {
   const { category, q, occasion, budget, preference } = filters;
   const searchable = [product.name, product.description, categories[product.category],
     preferences[product.preference], ...product.occasions.map((key) => occasions[key])].join(' ').toLowerCase();
-  return (!category || category === 'gifts' || product.category === category)
+  return (!category || product.category === category || (category === 'gifts' && product.preference === 'keepsakes'))
     && (!q || q.trim().toLowerCase().split(/\s+/).every((word) => searchable.includes(word)))
     && (!occasion || product.occasions.includes(occasion))
     && (!preference || product.preference === preference)

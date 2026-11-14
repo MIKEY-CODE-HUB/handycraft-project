@@ -110,6 +110,7 @@ const seasonalPicks = [
 ];
 
 const homeCollections = [
+  ['gifts', 'Gifts', null],
   ['bags', 'Travels and Bags', 'Palace Memoirs'],
   ['watches', 'Watches', null],
   ['wedding', 'Forever Wedding Classics', null],
@@ -190,27 +191,22 @@ function Shop(props) {
   return <div className="wrap inner-page">
     <p className="eyebrow">The HandyCrafts collection</p>
     <h1>{filters.q ? `Results for “${filters.q}”` : (Object.hasOwn(categories, filters.category) ? categories[filters.category] : 'Shop the collection')}</h1>
-    <div className="shop-layout">
-      <aside aria-label="Filters"><FilterControls filters={filters} update={update} /></aside>
-      <div className="shop-results">
-        <div className="results-bar">
-          <p aria-live="polite">{items.length} {items.length === 1 ? 'product' : 'products'}</p>
-          <button className="secondary mobile-filters" onClick={() => setFiltering(true)}><SlidersHorizontal size={16} /> Filters</button>
-          <label className="sort">Sort <select value={filters.sort || ''} onChange={(event) => update('sort', event.target.value)}>
-            <option value="">Featured</option><option value="asc">Price: low to high</option><option value="desc">Price: high to low</option>
-          </select></label>
-        </div>
-        {(chips.length > 0 || filters.q) && <div className="chips">
-          {filters.q && <button onClick={() => update('q', '')} aria-label={`Clear search for ${filters.q}`}>{filters.q} <X size={13} /></button>}
-          {chips.map(([key, label, options]) => <button key={key} onClick={() => update(key, '')}
-            aria-label={`Clear ${label.toLowerCase()} filter`}>{options[filters[key]]} <X size={13} /></button>)}
-          <button onClick={() => setParams(filters.sort ? { sort: filters.sort } : {})}>Clear all</button>
-        </div>}
-        {items.length ? <ProductGrid items={items} {...props} />
-          : <div className="empty"><h2>No matching products</h2><p>Try clearing a filter or searching for a different term.</p>
-            <button className="primary" onClick={() => setParams({})}>Show all products</button></div>}
-      </div>
+    <div className="results-bar">
+      <p aria-live="polite">{items.length} {items.length === 1 ? 'product' : 'products'}</p>
+      <button className="secondary" onClick={() => setFiltering(true)}><SlidersHorizontal size={16} /> Filters</button>
+      <label className="sort">Sort <select value={filters.sort || ''} onChange={(event) => update('sort', event.target.value)}>
+        <option value="">Featured</option><option value="asc">Price: low to high</option><option value="desc">Price: high to low</option>
+      </select></label>
     </div>
+    {(chips.length > 0 || filters.q) && <div className="chips">
+      {filters.q && <button onClick={() => update('q', '')} aria-label={`Clear search for ${filters.q}`}>{filters.q} <X size={13} /></button>}
+      {chips.map(([key, label, options]) => <button key={key} onClick={() => update(key, '')}
+        aria-label={`Clear ${label.toLowerCase()} filter`}>{options[filters[key]]} <X size={13} /></button>)}
+      <button onClick={() => setParams(filters.sort ? { sort: filters.sort } : {})}>Clear all</button>
+    </div>}
+    {items.length ? <ProductGrid items={items} {...props} />
+      : <div className="empty"><h2>No matching products</h2><p>Try clearing a filter or searching for a different term.</p>
+        <button className="primary" onClick={() => setParams({})}>Show all products</button></div>}
     {isFiltering && <Modal title="Filter products" className="filter-dialog" onClose={() => setFiltering(false)}>
       <FilterControls filters={filters} update={update} />
       <button className="primary" onClick={() => setFiltering(false)}>Show {items.length} {items.length === 1 ? 'product' : 'products'}</button>
